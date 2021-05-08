@@ -1,0 +1,72 @@
+@import "../_variables";
+
+.header {
+    width: 100%;
+    height: 400px;
+    position: relative;
+    padding: 10px;
+    box-sizing: border-box;
+    background: $back;
+}
+.text_box {
+    z-index: 2;
+    position: absolute;
+    top: 50%;
+    box-sizing: border-box;
+    padding: 20px;
+    transform: translateY(calc(-50%));
+    h1{
+        font-size: 65px;
+        margin: 0px;
+    }
+    h2{
+        margin-bottom: 50px;
+    }
+}
+
+@keyframes lineStart {
+    0%{
+        max-width: 0;
+    }
+    100%{
+        max-width: 70%;
+    }
+}
+
+.back_lines{
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+    padding:20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+    div {
+        height: 30px;
+        background-color: $default;
+        min-width: 10px;
+        border-radius: 10px;
+        animation: lineStart ease-out;
+    }
+    div:nth-child(1){
+        width: 60%;
+        animation-duration: 1s;
+    }
+    div:nth-child(2){
+        width: 30%;
+        animation-duration: 1.3s;
+    }
+    div:nth-child(4){
+        width: 70%;
+        animation-duration: 1.3s;
+    }
+    div:nth-child(3){
+        width: 45%;
+        animation-duration: 1.9s;
+    }
+    div:nth-child(5){
+        width: 25%;
+        animation-duration: 2.2s;
+    }
+}
