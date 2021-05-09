@@ -1,4 +1,5 @@
 import '../styles/globals.css'
+import '../styles/components/Header.css'
 import { AppProps } from 'next/app'
 import { JssProvider, jss, createGenerateId } from 'react-jss'
 

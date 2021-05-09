@@ -1,7 +1,9 @@
 import { createUseStyles } from 'react-jss'
+import { ButtonDefs } from '../styles/styleDefaults'
 
 export interface ButtonStyleProps {
-  color?: string
+  color?: string,
+  textColor?: string
 }
 
 export interface ButtonProps extends ButtonStyleProps {
@@ -23,14 +25,14 @@ const useStyles = createUseStyles({
     transition: '0.25s all ease-in-out',
     "&:hover": {
       background: props.color,
-      color: 'white'
+      color: props.textColor
     }
 
   })
 })
 
-const Button: React.FC<ButtonProps> = ({ text, color = "black", ...args }: ButtonProps): JSX.Element => {
-  const classes = useStyles({ color })
+const Button: React.FC<ButtonProps> = ({ text, color = ButtonDefs.color, textColor = ButtonDefs.textColor, ...args }: ButtonProps): JSX.Element => {
+  const classes = useStyles({ color, textColor })
 
   return (
     <button className={classes.button} {...args}>{text}</button>

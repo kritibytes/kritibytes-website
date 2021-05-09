@@ -4,7 +4,8 @@ import Project, { ProjectProps } from "../components/Project";
 export default {
   title: "Project",
   component: Project,
-
+  argTypes: {
+  }
 } as Meta
 
 const Template: React.FC<ProjectProps> = (args): JSX.Element => <Project {...args} />
