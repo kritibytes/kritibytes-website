@@ -1,4 +1,5 @@
 import styles from '../styles/components/Section.module.scss'
+import Heading from './Heading';
 
 export interface SectionProps {
   title: string,
@@ -9,7 +10,7 @@ export interface SectionProps {
 const Section: React.FC<SectionProps> = ({ title, id, children }: SectionProps): JSX.Element => {
   return (
     <section className={styles.section} id={id}>
-      <h1 className={styles.heading}>{title}</h1>
+      <Heading size={1} text={title} />
       {children}
     </section>
   );
