@@ -1,12 +1,11 @@
 import { createUseStyles } from 'react-jss'
 
-export interface ButtonProps {
-  text: string,
+export interface ButtonStyleProps {
   color?: string
 }
 
-export interface ButtonStyleProps {
-  color: string
+export interface ButtonProps extends ButtonStyleProps {
+  text: string,
 }
 
 const useStyles = createUseStyles({

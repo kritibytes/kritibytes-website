@@ -8,7 +8,7 @@ export default {
     htext: { control: 'text' },
     description: { control: 'text' }
   }
-}
+} as Meta
 
 const Template: React.FC<HeaderProps> = (args: HeaderProps): JSX.Element => <Header {...args} />
 
