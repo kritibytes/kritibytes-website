@@ -1,4 +1,4 @@
-import '../styles/components/Header.scss'
+import '../styles/components/Header.css'
 import Button from './Button'
 import { createUseStyles } from 'react-jss';
 
