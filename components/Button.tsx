@@ -31,7 +31,7 @@ const useStyles = createUseStyles({
   })
 })
 
-const Button: React.FC<ButtonProps> = ({ text, color = ButtonDefs.color, textColor = ButtonDefs.textColor, ...args }: ButtonProps): JSX.Element => {
+const Button: React.FC<ButtonProps> = ({ text, color = ButtonDefs.color, textColor = ButtonDefs.textColor, ...args }): JSX.Element => {
   const classes = useStyles({ color, textColor })
 
   return (

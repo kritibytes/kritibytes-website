@@ -7,7 +7,7 @@ export interface SectionProps {
   children: JSX.Element | string | never[]
 }
 
-const Section: React.FC<SectionProps> = ({ title, id, children }: SectionProps): JSX.Element => {
+const Section: React.FC<SectionProps> = ({ title, id, children }): JSX.Element => {
   return (
     <section className={styles.section} id={id}>
       <Heading size={1} text={title} />

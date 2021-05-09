@@ -1,7 +1,7 @@
-
 import Button from './Button'
 import { createUseStyles } from 'react-jss';
 import { HeaderDefs } from '../styles/styleDefaults';
+import { useState, useEffect } from 'react';
 
 export interface HeaderStyleProps {
   backColor?: string,
@@ -16,10 +16,11 @@ export interface HeaderProps extends HeaderStyleProps {
   description: string,
 }
 
+
 const useStyles = createUseStyles({
   header: (props: HeaderStyleProps) => ({
     width: '100%',
-    height: '400px',
+    height: '480px',
     position: 'relative',
     padding: '10px',
     boxSizing: 'border-box',
@@ -91,8 +92,9 @@ const useStyles = createUseStyles({
 
 const Header: React.FC<HeaderProps> = ({ htext, description, backColor = HeaderDefs.backColor, lineColor = HeaderDefs.lineColor, textColor = HeaderDefs.textColor, buttonColor = HeaderDefs.buttonColor, buttonTextColor = HeaderDefs.buttonTextColor }: HeaderProps): JSX.Element => {
   const classes = useStyles({ backColor, lineColor, textColor, buttonTextColor })
+
   return (
-    <header className={classes.header}>
+    <header className={classes.header} style={{paddingTop:'80px'}}>
       <div className={classes.back_lines}>
         <div></div>
         <div></div>

@@ -1,5 +1,6 @@
 import { ButtonStyleProps } from "../components/Button"
 import { HeaderStyleProps } from "../components/Header"
+import { NavbarStyleProps } from '../components/Navbar';
 
 export const ButtonDefs: ButtonStyleProps = {
   color: "black",
@@ -12,4 +13,8 @@ export const HeaderDefs: HeaderStyleProps = {
   textColor: "black",
   buttonColor: ButtonDefs.color,
   buttonTextColor: ButtonDefs.textColor
+}
+
+export const NavbarDefs: NavbarStyleProps = {
+  underlineColor: "#0ea0b9"
 }
