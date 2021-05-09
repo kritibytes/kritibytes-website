@@ -16,5 +16,7 @@ export const HeaderDefs: HeaderStyleProps = {
 }
 
 export const NavbarDefs: NavbarStyleProps = {
-  underlineColor: "#0ea0b9"
+  underlineColor: "#0ea0b9",
+  textColor: "black",
+  backColor:"#f8f9fa"
 }

@@ -20,7 +20,16 @@
 
 .navbar_brand {
     font-weight: 800 !important;
-    color: rgba(0, 0, 0, 0.9) !important;
+    display: inline-block;
+    padding-top: .3125rem;
+    padding-bottom: .3125rem;
+    margin-right: 1rem;
+    font-size: 1.25rem;
+    line-height: inherit;
+    white-space: nowrap;
+    &:hover{
+        text-decoration: none;
+    }
 }
 
 

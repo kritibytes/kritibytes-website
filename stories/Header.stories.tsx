@@ -16,7 +16,7 @@ export default {
   }
 } as Meta
 
-const Template: React.FC<HeaderProps> = (args: HeaderProps): JSX.Element => <Header {...args} />
+const Template: React.FC<HeaderProps> = (args): JSX.Element => <Header {...args} />
 
 export const Default = Template.bind({})
 Default.args = {

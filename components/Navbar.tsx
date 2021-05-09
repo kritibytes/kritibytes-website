@@ -5,19 +5,20 @@ import { createUseStyles } from "react-jss";
 import { NavbarDefs } from '../styles/styleDefaults';
 
 export interface NavbarStyleProps {
-  underlineColor?: string
+  underlineColor?: string,
+  backColor?: string,
+  textColor?: string
 }
 
 export interface NavbarProps extends NavbarStyleProps {
-
+  brandName: string,
 }
 
 const useStyle = createUseStyles({
   nav_link: {
     color: "rgba(0, 0, 0, 0.3) !important",
-    transition: "0.3s all ease !important",
     fontWeight: "700 !important",
-    transition: "0.3s all ease",
+    transition: "0.3s all ease!important",
     position: "relative",
     width: "fit-content",
     padding: "8px !important",
@@ -39,6 +40,12 @@ const useStyle = createUseStyles({
       opacity: 1,
       width: "100%",
     }
+  },
+  navbar_brand: {
+    color: (props: NavbarStyleProps) => props.textColor,
+    "&:hover": {
+      color: (props: NavbarStyleProps) => props.textColor
+    }
   }
 })
 
@@ -46,13 +53,13 @@ export const NavLink = ({ to, children, cls }) => {
   return <Link activeClass={style.nav_link__active + " nav-link"} to={to} spy={true} hashSpy={true} smooth={true} duration={1000} className={cls}>{children}</Link>
 }
 
-const Navbar: React.FC<NavbarProps> = ({ underlineColor = NavbarDefs.underlineColor }): JSX.Element => {
-  const classes = useStyle({ underlineColor })
+const Navbar: React.FC<NavbarProps> = ({ brandName, underlineColor = NavbarDefs.underlineColor, backColor = NavbarDefs.backColor, textColor = NavbarDefs.textColor }): JSX.Element => {
+  const classes = useStyle({ underlineColor, backColor, textColor })
   console.log(classes.nav_link)
   const [menuOpened, setMenuOpened] = useState(false)
   return (
     <nav id="navbar" className={style.navbar + ' navbar navbar-expand-md navbar-light bg-light ml-auto'}>
-      <a className={style.navbar_brand + " navbar-brand"} href="/">Kritibytes</a>
+      <a className={style.navbar_brand + " " + classes.navbar_brand} href="/">{brandName}</a>
       <button className={style.menu + (menuOpened ? ' ' + style.opened : '') + ' navbar-toggler'} type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded={menuOpened} aria-label="Toggle navigation" onClick={() => { setMenuOpened(!menuOpened) }}>
         <svg viewBox="0 0 100 100">
           <path className={style.line1} d="M 20,29.000046 H 80.000231 C 80.000231,29.000046 94.498839,28.817352 94.532987,66.711331 94.543142,77.980673 90.966081,81.670246 85.259173,81.668997 79.552261,81.667751 75.000211,74.999942 75.000211,74.999942 L 25.000021,25.000058" />
