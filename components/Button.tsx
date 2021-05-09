@@ -16,7 +16,7 @@ const useStyles = createUseStyles({
     outline: 'none',
     fontSize: 'larger',
     color: props.color,
-    border: `3px solid ${props.color || 'black'}`,
+    border: `3px solid ${props.color}`,
     padding: '10px 15px',
     borderRadius: 10,
     fontWeight: 500,
@@ -26,13 +26,16 @@ const useStyles = createUseStyles({
       background: props.color,
       color: 'white'
     }
+
   })
-}, { link: true })
+})
 
 const Button: React.FC<ButtonProps> = ({ text, color = "black", ...args }: ButtonProps): JSX.Element => {
-  const classes = useStyles({ color: "black" })
+  const classes = useStyles({ color })
 
-  return <button className={classes.button} {...args}>{text}</button>
+  return (
+    <button className={classes.button} {...args}>{text}</button>
+  );
 }
 
 export default Button;
