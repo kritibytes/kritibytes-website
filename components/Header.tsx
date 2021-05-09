@@ -1,12 +1,12 @@
 import styles from '../styles/components/Header.module.scss'
 import Button from './Button'
 
-type HeaderProps = {
+export interface HeaderProps {
   htext: string,
   description: string
 }
 
-const Header: React.FunctionComponent<HeaderProps> = ({ htext, description }: HeaderProps): JSX.Element => {
+const Header: React.FC<HeaderProps> = ({ htext, description }: HeaderProps): JSX.Element => {
   return (
     <header className={styles.header}>
       <div className={styles.back_lines}>

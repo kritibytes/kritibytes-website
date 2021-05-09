@@ -1,11 +1,11 @@
 import styles from '../styles/components/Button.module.scss'
 
-type ButtonProps = {
+export interface ButtonProps {
   text: string
 }
 
 
-const Button : React.FunctionComponent<ButtonProps> = ({ text }: ButtonProps): JSX.Element => {
+const Button : React.FC<ButtonProps> = ({ text }: ButtonProps): JSX.Element => {
   return (
     <button className={styles.button}>{text}</button>
   );

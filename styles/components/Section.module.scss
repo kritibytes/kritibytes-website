@@ -5,17 +5,3 @@
     padding: 30px 50px;
 }
 
-.heading{
-    font-size: 50px;
-    position: relative;
-    &::after{
-        content:'';
-        position: absolute;
-        left:-3px;
-        bottom:3px;
-        height: 20px;
-        width: 6ch;
-        background:$default;
-        z-index: -1;
-    }
-}

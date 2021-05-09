@@ -1,16 +1,16 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import styles from '../styles/Home.module.css'
+import styles from '../styles/Home.module.scss'
 import Button from '../components/Button';
 import Header from '../components/Header'
 import About from '../sections/index/About'
 import { useState } from 'react';
 
-type AppProps = {}
+export interface HomeProps {
 
-const Home: React.FunctionComponent<AppProps> = ({ }: AppProps): JSX.Element => {
-  const [btnText, setBtnText] = useState("")
+}
 
+const Home: React.FC<HomeProps> = ({ }: HomeProps): JSX.Element => {
   return (
     <>
       <Header
