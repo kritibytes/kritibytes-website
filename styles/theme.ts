@@ -9,17 +9,17 @@ export interface ITheme extends Jss.Theme {
 }
 
 export const lightTheme: ITheme = {
-  primary: "red",
+  primary: "#0ea0b9",
   background: "#ffffff",
   alternativeBackground: "#f8f8f8ff",
   text: "#000000",
-  alternativeText: "#000000"
+  alternativeText: "#00000080"
 }
 
 export const darkTheme: ITheme = {
-  primary:"green",
+  ...lightTheme,
   text: "#eeeeee",
-  alternativeText:"#eeeeee",
-  background: "#111111",
-  alternativeBackground: "#333333",  
+  alternativeText:"#ffffff80",
+  background: "#343A40",
+  alternativeBackground: "#494f57",  
 }

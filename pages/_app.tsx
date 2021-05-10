@@ -1,11 +1,14 @@
 import '../styles/globals.css'
 import '../styles/components/Header.css'
 import { AppProps } from 'next/dist/next-server/lib/router/router'
-import { JssProvider, jss, createGenerateId, ThemeProvider } from 'react-jss'
-import { darkTheme, lightTheme } from '../styles/theme';
+import { JssProvider, jss as JSS, createGenerateId, ThemeProvider, createUseStyles } from 'react-jss';
+import { darkTheme, lightTheme, ITheme } from '../styles/theme';
 import Head from 'next/head'
 import { useState, useEffect } from 'react';
 import ToggleThemeBtn from '../components/ToggleThemeBtn';
+import global from 'jss-plugin-global'
+
+JSS.use(global())
 
 const App: React.FC<AppProps> = ({ Component, pageProps }): JSX.Element => {
   const [theme, setTheme] = useState({})
@@ -16,10 +19,26 @@ const App: React.FC<AppProps> = ({ Component, pageProps }): JSX.Element => {
       setTheme(localStorage.getItem('kritibytes_theme') == "light" ? lightTheme : darkTheme)
     }
     localStorage.setItem('kritibytes_theme', theme == lightTheme ? "light" : "dark")
+    var globalStyle = document.getElementById("globalStyle")
+    if (globalStyle) {
+      globalStyle.innerHTML =
+        `
+          body{background:${theme.background};}
+          *{color:${theme.text};}
+        `
+    } else {
+      document.head.insertAdjacentHTML('beforeend',
+        `<style id="globalStyle">
+          body{background:${theme.background};}
+          *{color:${theme.text};}
+        </style > `
+      )
+    }
   }, [theme])
 
+
   return (
-    <JssProvider jss={jss} generateId={generateId}>
+    <JssProvider jss={JSS} generateId={generateId}>
       <ThemeProvider theme={theme}>
         <Head>
           <meta name="viewport" content="width=device-width,initial-scale=1" />

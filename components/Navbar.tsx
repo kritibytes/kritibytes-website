@@ -2,8 +2,9 @@ import { useState } from "react";
 import style from '../styles/components/Navbar.module.scss';
 import { Link as ReactScrollLink } from 'react-scroll'
 import Link from './Link'
-import { createUseStyles } from "react-jss";
+import { createUseStyles, useTheme } from 'react-jss';
 import { NavbarDefs } from '../styles/styleDefaults';
+import { ITheme, lightTheme, darkTheme } from '../styles/theme';
 
 export interface NavbarStyleProps {
   underlineColor?: string,
@@ -15,9 +16,8 @@ export interface NavbarProps extends NavbarStyleProps {
   brandName: string,
 }
 
-const useStyle = createUseStyles({
+const useStyle = createUseStyles((theme: ITheme) => ({
   nav_link: {
-    color: "rgba(0, 0, 0, 0.3) !important",
     fontWeight: "700 !important",
     transition: "0.3s all ease!important",
     position: "relative",
@@ -33,7 +33,7 @@ const useStyle = createUseStyles({
       position: "absolute",
       bottom: "0",
       left: "50%",
-      background: (props: NavbarStyleProps) => props.underlineColor,
+      background: theme.primary,
       transition: "0.3s all ease",
     },
     "&:hover:after": {
@@ -43,22 +43,22 @@ const useStyle = createUseStyles({
     }
   },
   navbar_brand: {
-    color: (props: NavbarStyleProps) => props.textColor,
+    color: theme.text,
     "&:hover": {
-      color: (props: NavbarStyleProps) => props.textColor
+      color: theme.text
     }
   }
-})
+}))
 
 export const NavLink = ({ to, children, cls }) => {
   return <ReactScrollLink activeClass={style.nav_link__active + " nav-link"} to={to} spy={true} hashSpy={true} smooth={true} duration={1000} className={cls}>{children}</ReactScrollLink>
 }
 
-const Navbar: React.FC<NavbarProps> = ({ brandName, underlineColor = NavbarDefs.underlineColor, backColor = NavbarDefs.backColor, textColor = NavbarDefs.textColor }): JSX.Element => {
-  const classes = useStyle({ underlineColor, backColor, textColor })
+const Navbar: React.FC<NavbarProps> = ({ brandName }): JSX.Element => {
+  const classes = useStyle()
   const [menuOpened, setMenuOpened] = useState(false)
   return (
-    <nav id="navbar" className={style.navbar + ' navbar navbar-expand-md navbar-light bg-light ml-auto'}>
+    <nav id="navbar" className={style.navbar + ' navbar navbar-expand-md ml-auto ' + (useTheme() == lightTheme ? "navbar-light bg-light" : "navbar-dark bg-dark")}>
       <Link href="/"><a className={style.navbar_brand + " " + classes.navbar_brand}>{brandName}</a></Link>
       <button className={style.menu + (menuOpened ? ' ' + style.opened : '') + ' navbar-toggler'} type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded={menuOpened} aria-label="Toggle navigation" onClick={() => { setMenuOpened(!menuOpened) }}>
         <svg viewBox="0 0 100 100">
