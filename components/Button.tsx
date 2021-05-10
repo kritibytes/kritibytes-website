@@ -14,7 +14,7 @@ const useStyles = createUseStyles({
   button: (props: ButtonStyleProps) => ({
     background: 'transparent',
     cursor: 'pointer',
-    outline: 'none',
+    outline: 'none!important',
     fontSize: 'larger',
     color: props.color,
     border: `3px solid ${props.color}`,

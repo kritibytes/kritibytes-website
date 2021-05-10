@@ -81,11 +81,19 @@ const useStyles = createUseStyles({
     "& h1": {
       fontSize: "65px",
       margin: "0px",
-      color: props.textColor
+      color: props.textColor,
+      "@media screen and (max-width: 600px)": {
+        fontSize: "40px"
+      }
     },
     "& h2": {
+      fontSize: "25px",
+      marginTop:"10px",
       marginBottom: "50px",
-      color: props.textColor
+      color: props.textColor,
+      "@media screen and (max-width:600px)": {
+        fontSize: "20px"
+      }
     }
   })
 })
@@ -94,7 +102,7 @@ const Header: React.FC<HeaderProps> = ({ htext, description, backColor = HeaderD
   const classes = useStyles({ backColor, lineColor, textColor, buttonTextColor })
 
   return (
-    <header className={classes.header} style={{paddingTop:'80px'}}>
+    <header className={classes.header} style={{ paddingTop: '80px' }}>
       <div className={classes.back_lines}>
         <div></div>
         <div></div>
