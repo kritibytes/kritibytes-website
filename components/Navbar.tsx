@@ -1,6 +1,7 @@
 import { useState } from "react";
 import style from '../styles/components/Navbar.module.scss';
-import { Link } from 'react-scroll'
+import { Link as ReactScrollLink } from 'react-scroll'
+import Link from 'next/link'
 import { createUseStyles } from "react-jss";
 import { NavbarDefs } from '../styles/styleDefaults';
 
@@ -50,7 +51,7 @@ const useStyle = createUseStyles({
 })
 
 export const NavLink = ({ to, children, cls }) => {
-  return <Link activeClass={style.nav_link__active + " nav-link"} to={to} spy={true} hashSpy={true} smooth={true} duration={1000} className={cls}>{children}</Link>
+  return <ReactScrollLink activeClass={style.nav_link__active + " nav-link"} to={to} spy={true} hashSpy={true} smooth={true} duration={1000} className={cls}>{children}</ReactScrollLink>
 }
 
 const Navbar: React.FC<NavbarProps> = ({ brandName, underlineColor = NavbarDefs.underlineColor, backColor = NavbarDefs.backColor, textColor = NavbarDefs.textColor }): JSX.Element => {
@@ -58,7 +59,7 @@ const Navbar: React.FC<NavbarProps> = ({ brandName, underlineColor = NavbarDefs.
   const [menuOpened, setMenuOpened] = useState(false)
   return (
     <nav id="navbar" className={style.navbar + ' navbar navbar-expand-md navbar-light bg-light ml-auto'}>
-      <a className={style.navbar_brand + " " + classes.navbar_brand} href="/">{brandName}</a>
+      <Link href="/"><a className={style.navbar_brand + " " + classes.navbar_brand}>{brandName}</a></Link>
       <button className={style.menu + (menuOpened ? ' ' + style.opened : '') + ' navbar-toggler'} type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded={menuOpened} aria-label="Toggle navigation" onClick={() => { setMenuOpened(!menuOpened) }}>
         <svg viewBox="0 0 100 100">
           <path className={style.line1} d="M 20,29.000046 H 80.000231 C 80.000231,29.000046 94.498839,28.817352 94.532987,66.711331 94.543142,77.980673 90.966081,81.670246 85.259173,81.668997 79.552261,81.667751 75.000211,74.999942 75.000211,74.999942 L 25.000021,25.000058" />
