@@ -1,6 +1,7 @@
 import { Jss } from "jss"
 
 export interface ITheme extends Jss.Theme {
+  ready?:boolean,
   primary: string,
   background: string,
   alternativeBackground: string,

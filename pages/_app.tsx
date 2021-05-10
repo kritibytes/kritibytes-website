@@ -11,11 +11,11 @@ import global from 'jss-plugin-global'
 JSS.use(global())
 
 const App: React.FC<AppProps> = ({ Component, pageProps }): JSX.Element => {
-  const [theme, setTheme] = useState(lightTheme)
+  const [theme, setTheme] = useState({ready:false,...lightTheme} as ITheme)
   const generateId = createGenerateId()
 
   useEffect(() => {
-    if (Object.keys(theme).length == 0) {
+    if (theme?.ready!=undefined && !theme.ready) {
       setTheme(localStorage.getItem('kritibytes_theme') == "light" ? lightTheme : darkTheme)
     }
     localStorage.setItem('kritibytes_theme', theme == lightTheme ? "light" : "dark")
