@@ -93,7 +93,6 @@ const useStyles = createUseStyles({
       color: props.textColor,
       "@media screen and (max-width:600px)": {
         fontSize: "20px",
-        width:"60%"
       }
     }
   })

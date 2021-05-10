@@ -20,10 +20,6 @@ const Home: React.FC<HomeProps> = ({ }): JSX.Element => {
         description="We are creating tech stuff for helping community!"
       />
       <About />
-      <About />
-      <About />
-      <About />
-      <About />
     </>
   )
 }
