@@ -55,7 +55,6 @@ export const NavLink = ({ to, children, cls }) => {
 
 const Navbar: React.FC<NavbarProps> = ({ brandName, underlineColor = NavbarDefs.underlineColor, backColor = NavbarDefs.backColor, textColor = NavbarDefs.textColor }): JSX.Element => {
   const classes = useStyle({ underlineColor, backColor, textColor })
-  console.log(classes.nav_link)
   const [menuOpened, setMenuOpened] = useState(false)
   return (
     <nav id="navbar" className={style.navbar + ' navbar navbar-expand-md navbar-light bg-light ml-auto'}>

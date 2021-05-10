@@ -14,7 +14,7 @@ export interface HomeProps {
 const Home: React.FC<HomeProps> = ({ }): JSX.Element => {
   return (
     <>
-      <Navbar />
+      <Navbar brandName="Kritibytes" />
       <Header
         htext="Kritibytes"
         description="We are creating tech stuff for helping community!"
