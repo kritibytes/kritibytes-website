@@ -18,10 +18,10 @@ const App: React.FC<AppProps> = ({ Component, pageProps }): JSX.Element => {
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href="https://kritibytes.tk/" />
         <meta charSet="UTF-8" />
-        <meta property="og:title" content="Kritibytes" />
-        <meta property="og:url" content="https://kritibytes.tk/" />
-        <meta property="og:image" content="https://kritibytes.tk/banner.png" />
-        <meta property="og:description" content="We are creating tech stuff for helping community!" />
+        <meta property="og:title" content="Kritibytes" key="ogtitle" />
+        <meta property="og:url" content="https://kritibytes.tk/" key="ogurl" />
+        <meta property="og:image" content="https://kritibytes.tk/banner.png" key="ogimage" />
+        <meta property="og:description" content="We are creating tech stuff for helping community!" key="ogdesc" />
       </Head>
       <Component {...pageProps} />
     </JssProvider>
