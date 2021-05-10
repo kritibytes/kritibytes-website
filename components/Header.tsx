@@ -75,6 +75,7 @@ const useStyles = createUseStyles((theme: ITheme) => ({
     "& h1": {
       fontSize: "65px",
       margin: "0px",
+      fontWeight:"700",
       color: theme.text,
       "@media screen and (max-width: 600px)": {
         fontSize: "40px"
