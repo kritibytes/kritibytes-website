@@ -2,6 +2,8 @@ import Button from './Button'
 import { createUseStyles } from 'react-jss';
 import { HeaderDefs } from '../styles/styleDefaults';
 import { useState, useEffect } from 'react';
+import { useTheme } from 'react-jss'
+import { ITheme } from '../styles/theme';
 
 export interface HeaderStyleProps {
   backColor?: string,
@@ -17,24 +19,16 @@ export interface HeaderProps extends HeaderStyleProps {
 }
 
 
-const useStyles = createUseStyles({
-  header: (props: HeaderStyleProps) => ({
+const useStyles = createUseStyles((theme: ITheme) => ({
+  header: {
     width: '100%',
     height: '480px',
     position: 'relative',
     padding: '10px',
     boxSizing: 'border-box',
-    background: props.backColor
-  }),
-  "@keyframes lineStart": {
-    "0%": {
-      maxWidth: "0"
-    },
-    "100%": {
-      maxWidth: "70%"
-    }
+    background: theme.alternativeBackground
   },
-  back_lines: (props: HeaderStyleProps) => ({
+  back_lines: {
     height: '100%',
     width: '100%',
     zIndex: 1,
@@ -45,7 +39,7 @@ const useStyles = createUseStyles({
     alignItems: 'flex-end',
     "& div": {
       height: '30px',
-      backgroundColor: props.lineColor,
+      backgroundColor: theme.primary,
       minWidth: "10px",
       borderRadius: "10px",
       animation: "lineStart ease-out"
@@ -70,8 +64,8 @@ const useStyles = createUseStyles({
       width: "25%",
       animationDuration: "2.2s"
     },
-  }),
-  text_box: (props: HeaderStyleProps) => ({
+  },
+  text_box: {
     zIndex: 2,
     position: "absolute",
     top: "50%",
@@ -81,25 +75,26 @@ const useStyles = createUseStyles({
     "& h1": {
       fontSize: "65px",
       margin: "0px",
-      color: props.textColor,
+      color: theme.text,
       "@media screen and (max-width: 600px)": {
         fontSize: "40px"
       }
     },
     "& h2": {
       fontSize: "25px",
-      marginTop:"10px",
+      marginTop: "10px",
       marginBottom: "50px",
-      color: props.textColor,
+      color: theme.text,
       "@media screen and (max-width:600px)": {
         fontSize: "20px",
       }
     }
-  })
-})
+  }
+}))
 
-const Header: React.FC<HeaderProps> = ({ htext, description, backColor = HeaderDefs.backColor, lineColor = HeaderDefs.lineColor, textColor = HeaderDefs.textColor, buttonColor = HeaderDefs.buttonColor, buttonTextColor = HeaderDefs.buttonTextColor }: HeaderProps): JSX.Element => {
-  const classes = useStyles({ backColor, lineColor, textColor, buttonTextColor })
+const Header: React.FC<HeaderProps> = ({ htext, description }: HeaderProps): JSX.Element => {
+  const theme = useTheme() as ITheme
+  const classes = useStyles()
 
   return (
     <header className={classes.header} style={{ paddingTop: '80px' }}>
@@ -113,7 +108,7 @@ const Header: React.FC<HeaderProps> = ({ htext, description, backColor = HeaderD
       <div className={classes.text_box}>
         <h1>{htext}</h1>
         <h2>{description}</h2>
-        <Button text="Explore More" color={buttonColor} textColor={buttonTextColor} />
+        <Button text="Explore More" color={theme.text} textColor={theme.alternativeBackground} />
       </div>
     </header>
   );

@@ -6,7 +6,7 @@ export interface LinkProps {
 }
 
 const CustomLink: React.FC<LinkProps> = ({ href, children }) => {
-  return <Link href={href} as={process.env.BACKEND_URL + href}>{children}</Link>;
+  return <Link href={href} as={href}>{children}</Link>;
 }
 
 export default CustomLink;
