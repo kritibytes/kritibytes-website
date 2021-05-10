@@ -1,7 +1,7 @@
 import { useState } from "react";
 import style from '../styles/components/Navbar.module.scss';
 import { Link as ReactScrollLink } from 'react-scroll'
-import Link from 'next/link'
+import Link from './Link'
 import { createUseStyles } from "react-jss";
 import { NavbarDefs } from '../styles/styleDefaults';
 
