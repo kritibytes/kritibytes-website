@@ -11,7 +11,7 @@ import global from 'jss-plugin-global'
 JSS.use(global())
 
 const App: React.FC<AppProps> = ({ Component, pageProps }): JSX.Element => {
-  const [theme, setTheme] = useState({})
+  const [theme, setTheme] = useState(lightTheme)
   const generateId = createGenerateId()
 
   useEffect(() => {
