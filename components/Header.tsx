@@ -92,7 +92,8 @@ const useStyles = createUseStyles({
       marginBottom: "50px",
       color: props.textColor,
       "@media screen and (max-width:600px)": {
-        fontSize: "20px"
+        fontSize: "20px",
+        width:"60%"
       }
     }
   })
