@@ -12,6 +12,7 @@ a {
 }
 
 * {
+    outline: none!important;
     box-sizing: border-box;
     font-family: "Montserrat", sans-serif !important;
     transition: .3s color ease,

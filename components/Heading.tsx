@@ -9,14 +9,16 @@ export interface HeadingProps {
 const useStyles = createUseStyles((theme: ITheme) => ({
   heading: {
     fontSize: "50px",
+    width:"fit-content",
     position: "relative",
+    display:"block",
     "&:after": {
       content: '""',
       position: "absolute",
       left: "-3px",
       bottom: "3px",
       height: "20px",
-      width: "6ch",
+      width: "calc(100% + 1ch)",
       background: theme.primary,
       zIndex: "-1",
     }

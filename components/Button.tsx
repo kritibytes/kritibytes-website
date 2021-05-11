@@ -9,6 +9,7 @@ export interface ButtonStyleProps {
 
 export interface ButtonProps extends ButtonStyleProps {
   text: string,
+  onClick?:any
 }
 
 const useStyles = createUseStyles({

@@ -1,35 +1,19 @@
 import { createUseStyles } from "react-jss";
 import { ITheme } from '../styles/theme';
-// import Image from 'next/image'
 import Heading from './Heading';
 import Button from './Button';
-
-const Image = props => {
-  const { width, height } = props
-  const ratio = (height / width) * 100
-  return (
-    <div
-      style={{
-        paddingBottom: `${ratio}%`,
-        position: "relative",
-      }}
-    >
-      <img
-        style={{
-          objectFit: "cover",
-          minWidth: "100%",
-          minHeight: "100%",
-          maxWidth: "100%",
-          maxHeight: "100%",
-        }}
-        {...props}
-      />
-    </div>
-  )
-}
+import Image from './Image'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
 
 export interface ProjectProps {
-
+  image: string,
+  name: string,
+  details: string,
+  buttons: {
+    documentation?: string,
+    github?: string
+  }
 }
 
 const useStyles = createUseStyles((theme: ITheme) => ({
@@ -43,7 +27,7 @@ const useStyles = createUseStyles((theme: ITheme) => ({
     position: 'relative',
     height: "auto",
     overflow: "hidden",
-    transition:".25s box-shadow ease-in-out",
+    transition: ".25s box-shadow ease-in-out",
     "&:hover": {
       boxShadow: `0px 0px 10px ${theme.alternativeBackground}`,
     }
@@ -65,36 +49,45 @@ const useStyles = createUseStyles((theme: ITheme) => ({
   info: {
     width: "100%",
     padding: "20px 10px",
+    flexGrow:"1",
   },
   buttons: {
+    display:"block",
     padding: "10px",
-    left: "50%",
-    display: "flex",
-    width: "50%",
     "& > *": {
       marginRight: "10px"
     }
   }
 }))
 
-const Project: React.FC<ProjectProps> = (): JSX.Element => {
+const Project: React.FC<ProjectProps> = ({ image, name, details, buttons }): JSX.Element => {
+  const router = useRouter()
+  image = image.startsWith("@@") ? "https://opengraph.githubassets.com/c6a5f3ed8ab389f348b01939a1fc000c4ac410f3e1b3a6a7b9047c7af05481aa/" + image.slice(2) : image
   const classes = useStyles()
   return (
     <div className={classes.wrapper}>
       <div className={classes.image}>
         <Image
-          src="https://opengraph.githubassets.com/c6a5f3ed8ab389f348b01939a1fc000c4ac410f3e1b3a6a7b9047c7af05481aa/kritibytes/flaskmng"
+          src={image}
         />
       </div>
       <div className={classes.info}>
-        <Heading size={2} text={"flaskmng"} />
+        <Heading size={2} text={name} />
         <p>
-          flaskmng is a tool that manages Flask project. It is designed in MVT architecture.
+          {details}
         </p>
       </div>
       <div className={classes.buttons}>
-        <Button text="Documentation" color="#238636" textColor="white" fontSize="small" />
-        <Button text="Github" color="black" textColor="white" fontSize="small" />
+        {
+          "documentation" in buttons
+            ? <Button text="Documentation" color="#238636" textColor="white" fontSize="small" onClick={() => { router.push(buttons.documentation) }} />
+            : null
+        }
+        {
+          "github" in buttons
+            ? <Button text="Github" color="black" textColor="white" fontSize="small" onClick={() => { router.push(buttons.github) }} />
+            : null
+        }
       </div>
     </div>
   );
