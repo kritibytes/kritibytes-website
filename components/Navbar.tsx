@@ -49,7 +49,7 @@ const useStyle = createUseStyles((theme: ITheme) => ({
 }))
 
 export const NavLink = ({ to, children, cls }) => {
-  return <ReactScrollLink activeClass={style.nav_link__active + " nav-link"} to={to} spy={true} hashSpy={true} smooth={true} duration={1000} className={cls}>{children}</ReactScrollLink>
+  return <ReactScrollLink activeClass={"nav-link active"} to={to} spy={true} hashSpy={true} smooth={true} duration={1000} className={cls}>{children}</ReactScrollLink>
 }
 
 const Navbar: React.FC<NavbarProps> = ({ brandName }): JSX.Element => {
@@ -57,7 +57,6 @@ const Navbar: React.FC<NavbarProps> = ({ brandName }): JSX.Element => {
   const [menuOpened, setMenuOpened] = useState(false)
 
   const navLinks = [
-    ['Hello', 'hello'],
     ['About us', 'about'],
     ['Projects', 'projects'],
     ['Contact', 'contact']

@@ -9,7 +9,7 @@ export interface ToggleThemeBtnProps {
 
 const useStyles = createUseStyles({
   button: {
-    position:"absolute",
+    position:"fixed",
     display: "block",
     width: "50px",
     height:"50px",

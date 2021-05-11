@@ -4,7 +4,7 @@ import Heading from './Heading';
 export interface SectionProps {
   title: string,
   id: string,
-  children: JSX.Element | string | never[]
+  children: any
 }
 
 const Section: React.FC<SectionProps> = ({ title, id, children }): JSX.Element => {
