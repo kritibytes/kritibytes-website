@@ -12,25 +12,28 @@ const useStyles = createUseStyles((theme: ITheme) => ({
     position: "relative",
     "&:after": {
       content: '""',
-        position: "absolute",
-        left: "-3px",
-        bottom: "3px",
-        height: "20px",
-        width: "6ch",
-        background: theme.primary,
-        zIndex: "-1",
+      position: "absolute",
+      left: "-3px",
+      bottom: "3px",
+      height: "20px",
+      width: "6ch",
+      background: theme.primary,
+      zIndex: "-1",
     }
-}
+  },
+  heading2: {
+    fontSize: "42px",
+  }
 }))
 
 const Heading: React.FC<HeadingProps> = ({ text, size }): JSX.Element => {
   const classes = useStyles()
-  
+
   switch (size) {
     case 1:
       return <h1 className={classes.heading}>{text}</h1>
     case 2:
-      return <h2 className={classes.heading}>{text}</h2>
+      return <h2 className={classes.heading2}>{text}</h2>
     case 3:
       return <h3 className={classes.heading}>{text}</h3>
     case 4:

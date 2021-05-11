@@ -3,16 +3,9 @@ import style from '../styles/components/Navbar.module.scss';
 import { Link as ReactScrollLink } from 'react-scroll'
 import Link from './Link'
 import { createUseStyles, useTheme } from 'react-jss';
-import { NavbarDefs } from '../styles/styleDefaults';
 import { ITheme, lightTheme, darkTheme } from '../styles/theme';
 
-export interface NavbarStyleProps {
-  underlineColor?: string,
-  backColor?: string,
-  textColor?: string
-}
-
-export interface NavbarProps extends NavbarStyleProps {
+export interface NavbarProps {
   brandName: string,
 }
 
@@ -50,7 +43,7 @@ const useStyle = createUseStyles((theme: ITheme) => ({
   },
   line: {
     "& path": {
-      stroke:theme.text
+      stroke: theme.text
     }
   }
 }))
@@ -62,6 +55,14 @@ export const NavLink = ({ to, children, cls }) => {
 const Navbar: React.FC<NavbarProps> = ({ brandName }): JSX.Element => {
   const classes = useStyle()
   const [menuOpened, setMenuOpened] = useState(false)
+
+  const navLinks = [
+    ['Hello', 'hello'],
+    ['About us', 'about'],
+    ['Projects', 'projects'],
+    ['Contact', 'contact']
+  ]
+
   return (
     <nav id="navbar" className={style.navbar + ' navbar navbar-expand-md ml-auto ' + (useTheme() == lightTheme ? "navbar-light bg-light" : "navbar-dark bg-dark")}>
       <Link href="/"><a className={style.navbar_brand + " " + classes.navbar_brand}>{brandName}</a></Link>
@@ -74,21 +75,13 @@ const Navbar: React.FC<NavbarProps> = ({ brandName }): JSX.Element => {
       </button>
       <div className="collapse navbar-collapse" id="navbarSupportedContent">
         <ul className={style.navbar_nav + " navbar-nav ml-auto"}>
-          <li className='nav-item'>
-            <NavLink cls={classes.nav_link + " nav-link"} to="hello">Hello</NavLink>
-          </li>
-          <li className='nav-item'>
-            <NavLink cls={classes.nav_link + " nav-link"} to="about">About Me</NavLink>
-          </li>
-          <li className='nav-item'>
-            <NavLink cls={classes.nav_link + " nav-link"} to="skills">Skills</NavLink>
-          </li>
-          <li className='nav-item'>
-            <NavLink cls={classes.nav_link + " nav-link"} to="projects">Projects</NavLink>
-          </li>
-          <li className='nav-item'>
-            <NavLink cls={classes.nav_link + " nav-link"} to="contact">Contact</NavLink>
-          </li>
+          {
+            navLinks.map((value, index) => (
+              <li className='nav-item' key={index}>
+                <NavLink cls={classes.nav_link + " nav-link"} to={value[1]}>{value[0]}</NavLink>
+              </li>
+            ))
+          }
         </ul>
       </div>
     </nav>

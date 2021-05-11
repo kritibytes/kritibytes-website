@@ -1,19 +1,10 @@
 import Button from './Button'
 import { createUseStyles } from 'react-jss';
-import { HeaderDefs } from '../styles/styleDefaults';
 import { useState, useEffect } from 'react';
 import { useTheme } from 'react-jss'
 import { ITheme } from '../styles/theme';
 
-export interface HeaderStyleProps {
-  backColor?: string,
-  lineColor?: string,
-  textColor?: string,
-  buttonColor?: string,
-  buttonTextColor?: string
-}
-
-export interface HeaderProps extends HeaderStyleProps {
+export interface HeaderProps {
   htext: string,
   description: string,
 }

@@ -3,7 +3,8 @@ import { ButtonDefs } from '../styles/styleDefaults'
 
 export interface ButtonStyleProps {
   color?: string,
-  textColor?: string
+  textColor?: string,
+  fontSize?: string
 }
 
 export interface ButtonProps extends ButtonStyleProps {
@@ -15,7 +16,7 @@ const useStyles = createUseStyles({
     background: 'transparent',
     cursor: 'pointer',
     outline: 'none!important',
-    fontSize: 'larger',
+    fontSize: props.fontSize,
     color: props.color,
     border: `3px solid ${props.color}`,
     padding: '10px 15px',
@@ -31,8 +32,8 @@ const useStyles = createUseStyles({
   })
 })
 
-const Button: React.FC<ButtonProps> = ({ text, color = ButtonDefs.color, textColor = ButtonDefs.textColor, ...args }): JSX.Element => {
-  const classes = useStyles({ color, textColor })
+const Button: React.FC<ButtonProps> = ({ text, color = ButtonDefs.color, textColor = ButtonDefs.textColor, fontSize = "larger", ...args }): JSX.Element => {
+  const classes = useStyles({ color, textColor, fontSize })
 
   return (
     <button className={classes.button} {...args}>{text}</button>
