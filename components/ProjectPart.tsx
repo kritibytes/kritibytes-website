@@ -6,7 +6,7 @@ export interface ProjectPartProps {
 }
 
 const useStyles = createUseStyles({
-  wrapper: {
+  part_holder: {
     paddingTop:"20px",
     display: "grid",
     gridColumnGap: "20px",
@@ -24,7 +24,7 @@ const useStyles = createUseStyles({
 const ProjectPart: React.FC<ProjectPartProps> = ({ children }) => {
   const classes = useStyles()
   return (
-    <div className={classes.wrapper}>
+    <div className={classes.part_holder}>
       {children}
     </div>
   );

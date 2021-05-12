@@ -27,7 +27,7 @@ const useStyles = createUseStyles((theme: ITheme) => ({
     position: 'relative',
     height: "auto",
     overflow: "hidden",
-    transition: ".25s box-shadow ease-in-out",
+    transition: ".25s box-shadow ease-in-out, .3s color ease, .3s background ease",
     "&:hover": {
       boxShadow: `0px 0px 10px ${theme.alternativeBackground}`,
     }
