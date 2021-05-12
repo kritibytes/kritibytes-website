@@ -22,9 +22,9 @@ const Projects: React.FC = (): JSX.Element => {
           :
           <ProjectPart>
             {projectsData.map(
-              (d,index) => (
+              ({id,...d}) => (
                 <Project
-                  key={index}
+                  key={id}
                   {...d}
                 />
               )

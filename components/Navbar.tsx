@@ -7,6 +7,7 @@ import { ITheme, lightTheme, darkTheme } from '../styles/theme';
 
 export interface NavbarProps {
   brandName: string,
+  navLinks:string[][]
 }
 
 const useStyle = createUseStyles((theme: ITheme) => ({
@@ -52,15 +53,10 @@ export const NavLink = ({ to, children, cls }) => {
   return <ReactScrollLink activeClass={"nav-link active"} to={to} spy={true} hashSpy={true} smooth={true} duration={1000} className={cls}>{children}</ReactScrollLink>
 }
 
-const Navbar: React.FC<NavbarProps> = ({ brandName }): JSX.Element => {
+const Navbar: React.FC<NavbarProps> = ({ navLinks,brandName }): JSX.Element => {
   const classes = useStyle()
   const [menuOpened, setMenuOpened] = useState(false)
 
-  const navLinks = [
-    ['About us', 'about'],
-    ['Projects', 'projects'],
-    ['Contact', 'contact']
-  ]
 
   return (
     <nav id="navbar" className={style.navbar + ' navbar navbar-expand-md ml-auto ' + (useTheme() == lightTheme ? "navbar-light bg-light" : "navbar-dark bg-dark")}>

@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next'
-import db from '../../services/db'
+import db from '../../../services/db'
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   const firestoreResponse = await db.collection('projects').get();
@@ -7,6 +7,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   firestoreResponse.forEach((doc) => {
     var { name, details, image, documentation = undefined, github = undefined } = doc.data()
     var projectObj = {
+      id:doc.id,
       name,
       image,
       details,

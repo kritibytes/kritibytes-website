@@ -12,9 +12,8 @@ a {
 }
 
 * {
-    outline: none!important;
+    outline: none !important;
     box-sizing: border-box;
     font-family: "Montserrat", sans-serif !important;
-    transition: .3s color ease,
-                .3s background ease;
+    transition: 0.3s color ease, 0.3s background ease;
 }

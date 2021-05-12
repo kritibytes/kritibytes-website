@@ -25,6 +25,9 @@ const useStyles = createUseStyles((theme: ITheme) => ({
   },
   heading2: {
     fontSize: "42px",
+  },
+  heading3: {
+    fontSize: "35px",
   }
 }))
 
@@ -37,7 +40,7 @@ const Heading: React.FC<HeadingProps> = ({ text, size }): JSX.Element => {
     case 2:
       return <h2 className={classes.heading2}>{text}</h2>
     case 3:
-      return <h3 className={classes.heading}>{text}</h3>
+      return <h3 className={classes.heading3}>{text}</h3>
     case 4:
       return <h4 className={classes.heading}>{text}</h4>
     case 5:

@@ -1,3 +1,4 @@
+import React from 'react'
 import { createUseStyles } from 'react-jss'
 import { ButtonDefs } from '../styles/styleDefaults'
 
@@ -8,8 +9,8 @@ export interface ButtonStyleProps {
 }
 
 export interface ButtonProps extends ButtonStyleProps {
-  text: string,
-  onClick?:any
+  text: any,
+  onClick?: any
 }
 
 const useStyles = createUseStyles({
@@ -39,6 +40,10 @@ const Button: React.FC<ButtonProps> = ({ text, color = ButtonDefs.color, textCol
   return (
     <button className={classes.button} {...args}>{text}</button>
   );
+}
+
+export const TButton: React.FC<any> = ({ theme, ...props }) => {
+  return <Button color={theme.text} textColor={theme.background} {...props} />
 }
 
 export default Button;
