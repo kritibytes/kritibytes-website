@@ -8,9 +8,9 @@ import global from 'jss-plugin-global';
 JSS.use(global())
 
 export interface AppLayoutProps {
-  storybook: boolean,
-  children: any,
-  STheme: ITheme
+  storybook?: boolean,
+  children?: any,
+  STheme?: ITheme
 }
 
 const AppLayout: React.FC<AppLayoutProps> = ({ children, storybook = false, STheme = lightTheme }): JSX.Element => {
