@@ -18,11 +18,11 @@ export interface ProjectProps {
 
 const useStyles = createUseStyles((theme: ITheme) => ({
   wrapper: {
+    display: "flex",
+    flexDirection: "column",
     width: "100%",
     padding: "10px",
     boxSizing: "border-box",
-    display: "flex",
-    flexDirection: "column",
     background: theme.alternativeBackground,
     position: 'relative',
     height: "auto",
@@ -60,7 +60,7 @@ const useStyles = createUseStyles((theme: ITheme) => ({
   }
 }))
 
-const Project: React.FC<ProjectProps> = ({ image, name, details, buttons }): JSX.Element => {
+const Project: React.FC<ProjectProps> = ({ image, name, details, buttons={} }): JSX.Element => {
   const router = useRouter()
   image = image.startsWith("@@") ? "https://opengraph.githubassets.com/c6a5f3ed8ab389f348b01939a1fc000c4ac410f3e1b3a6a7b9047c7af05481aa/" + image.slice(2) : image
   const classes = useStyles()

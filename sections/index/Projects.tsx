@@ -1,30 +1,37 @@
 import Section from "../../components/Section";
 import Project from "../../components/Project";
 import ProjectPart from '../../components/ProjectPart';
+import { useState, useEffect } from 'react';
+import axios from "axios";
 
 
 const Projects: React.FC = (): JSX.Element => {
+  const [projectsData, setProjectsData] = useState([])
+
+  useEffect(() => {
+    axios.get('/api/projects').then(resp => {
+      setProjectsData(resp.data)
+    })
+  }, [])
+
   return (
     <Section title="Projects" id="projects">
-      <ProjectPart>
-        <Project
-          image="@@kritibytes/flaskmng"
-          name="flaskmng"
-          details="flaskmng is a tool that manages Flask project. It is designed in MVT architecture."
-          buttons={{
-            documentation: "https://flaskmng.readthedocs.io/en/latest/",
-            github: "https://github.com/kritibytes/flaskmng"
-          }}
-        />
-        <Project
-          image="@@kritibytes/readme-py"
-          name="readme-py"
-          details="Python library to generate perfect READMEs."
-          buttons={{
-            github: "https://github.com/kritibytes/readme-py"
-          }}
-        />
-      </ProjectPart>
+      {
+        projectsData.length == 0
+          ? "Loading..."
+          :
+          <ProjectPart>
+            {projectsData.map(
+              (d,index) => (
+                <Project
+                  key={index}
+                  {...d}
+                />
+              )
+            )}
+          </ProjectPart>
+      }
+
     </Section>
   );
 }
