@@ -11,7 +11,6 @@ export interface PanelProps {
 
 const Panel: React.FC<PanelProps> = ({ user, signOut }) => {
   const theme = useTheme()
-  console.log(user)
   return (
     <>
       <Navbar brandName="Kritibytes Admin" navLinks={[

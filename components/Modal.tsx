@@ -1,6 +1,7 @@
 import * as ReactModal from 'react-modal';
 import { useState } from 'react';
-import { createUseStyles } from 'react-jss';
+import { createUseStyles, useTheme } from 'react-jss';
+import { ITheme } from '../styles/theme';
 
 export interface ModalProps {
   children: any,
@@ -8,18 +9,23 @@ export interface ModalProps {
   setIsOpen: any
 }
 
-const useStyles = createUseStyles({
+const useStyles = createUseStyles((theme: ITheme) => ({
   closebtn: {
-    color: "red",
+    // color: "red",
     position: "absolute",
     right: "10px",
     top: "10px",
     fontSize: "23px",
-    cursor:"pointer"
+    cursor: "pointer",
+    color: theme.alternativeText,
+    "&:hover": {
+      color: "red"
+    }
   }
-})
+}))
 
 const Modal: React.FC<ModalProps> = ({ isOpen, setIsOpen, children }) => {
+  const theme: ITheme = useTheme()
   const classes = useStyles()
   const closeModal = () => {
     setIsOpen(false)
@@ -31,7 +37,8 @@ const Modal: React.FC<ModalProps> = ({ isOpen, setIsOpen, children }) => {
         isOpen={isOpen}
         onRequestClose={closeModal}
         contentLabel="Modal"
-        style={{ overlay: { zIndex: "999" } }}
+        ariaHideApp={false}
+        style={{ overlay: { zIndex: "999", background: "rgba(0,0,0,0.5)" }, content: { background: theme.background } }}
       >
         <div onClick={() => { setIsOpen(false) }} className={classes.closebtn}>✕</div>
         {children}

@@ -13,13 +13,15 @@ export type Projects_createInputs = {
 };
 
 
-const Projects_create: React.FC<any> = ({ onSubmit,loading }) => {
+const Projects_create: React.FC<any> = ({ onSubmit, loading, defaultValues = {}, title, id = "" }) => {
   const theme = useTheme()
-  const { register, handleSubmit, watch, formState: { errors } } = useForm<Projects_createInputs>();
+  const { register, handleSubmit, watch, formState: { errors } } = useForm<Projects_createInputs>({
+    defaultValues
+  });
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="col-md-12 row mt-4">
+    <form onSubmit={handleSubmit((data) => { onSubmit({ id, ...data }) })} className="col-md-12 row mt-4">
       <div className="col-md-12">
-        <Heading size={3} text="Create" />
+        <Heading size={3} text={title} />
       </div>
       <div className="form-group col-md-6">
         <label>Name</label>
@@ -42,7 +44,7 @@ const Projects_create: React.FC<any> = ({ onSubmit,loading }) => {
         <input className="form-control" defaultValue="" {...register("github")} />
       </div>
       <div className="form-group col-md-12 float-left">
-        <TButton type="submit" text={loading ? "Creating..." : "Submit"} theme={theme} />
+        <TButton type="submit" text={loading[0] ? loading[1] : "Submit"} theme={theme} />
       </div>
     </form>
   );
