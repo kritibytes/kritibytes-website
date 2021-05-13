@@ -17,6 +17,7 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.35",
     "@fortawesome/free-solid-svg-icons": "^5.15.3",
     "@fortawesome/react-fontawesome": "^0.1.14",
+    "@prisma/client": "^2.22.1",
     "@storybook/addons": "^6.2.9",
     "@storybook/preset-scss": "^1.0.3",
     "axios": "^0.21.1",
