@@ -49,10 +49,10 @@ const useStyles = createUseStyles((theme: ITheme) => ({
   info: {
     width: "100%",
     padding: "20px 10px",
-    flexGrow:"1",
+    flexGrow: "1",
   },
   buttons: {
-    display:"block",
+    display: "block",
     padding: "10px",
     "& > *": {
       marginRight: "10px"
@@ -60,7 +60,7 @@ const useStyles = createUseStyles((theme: ITheme) => ({
   }
 }))
 
-const Project: React.FC<ProjectProps> = ({ image, name, details, buttons={} }): JSX.Element => {
+const Project: React.FC<ProjectProps> = ({ image, name, details, buttons = {} }): JSX.Element => {
   const router = useRouter()
   image = image.startsWith("@@") ? "https://opengraph.githubassets.com/c6a5f3ed8ab389f348b01939a1fc000c4ac410f3e1b3a6a7b9047c7af05481aa/" + image.slice(2) : image
   const classes = useStyles()
@@ -79,12 +79,12 @@ const Project: React.FC<ProjectProps> = ({ image, name, details, buttons={} }): 
       </div>
       <div className={classes.buttons}>
         {
-          "documentation" in buttons
+          buttons.documentation.length > 0
             ? <Button text="Documentation" color="#238636" textColor="white" fontSize="small" onClick={() => { router.push(buttons.documentation) }} />
             : null
         }
         {
-          "github" in buttons
+          buttons.github.length > 0
             ? <Button text="Github" color="black" textColor="white" fontSize="small" onClick={() => { router.push(buttons.github) }} />
             : null
         }

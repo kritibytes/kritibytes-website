@@ -17,9 +17,9 @@ const Panel: React.FC<PanelProps> = ({ user, signOut }) => {
         ['Projects', 'projects'],
         ['Danger Zone', 'danger_zone']
       ]} />
-      <Header htext="Kritibytes Admin" description="Admin Panel for Kritibytes" />
+      <Header showBtn={false} htext="Kritibytes Admin" description="Admin Panel for Kritibytes" />
       <Projects />
-      <DangerZone signOut={signOut}/>
+      <DangerZone signOut={signOut} />
     </>
   );
 }

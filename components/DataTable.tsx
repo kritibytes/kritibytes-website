@@ -1,5 +1,5 @@
 import { useTable } from 'react-table'
-import { useTheme } from 'react-jss';
+import { useTheme, createUseStyles } from 'react-jss';
 import { lightTheme } from '../styles/theme';
 import Button, { TButton } from './Button';
 
@@ -10,8 +10,17 @@ export interface TableProps {
   deleteBtnHandler: any,
 }
 
+const useStyles = createUseStyles({
+  table: {
+    "& td": {
+      verticalAlign:"middle"
+    }
+  }
+})
+
 const Table: React.FC<TableProps> = ({ columns, data, updateBtnHandler, deleteBtnHandler }) => {
   const theme = useTheme()
+  const classes = useStyles()
   const {
     getTableProps,
     getTableBodyProps,
@@ -21,7 +30,7 @@ const Table: React.FC<TableProps> = ({ columns, data, updateBtnHandler, deleteBt
   } = useTable({ columns, data })
 
   return (
-    <table {...getTableProps()} className={"table"}>
+    <table {...getTableProps()} className={"table table-bordered " + classes.table}>
       <thead>
         {headerGroups.map(headerGroup => (
           <tr {...headerGroup.getHeaderGroupProps()}>

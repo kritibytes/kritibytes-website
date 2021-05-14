@@ -7,6 +7,7 @@ import { ITheme } from '../styles/theme';
 export interface HeaderProps {
   htext: string,
   description: string,
+  showBtn?: boolean
 }
 
 
@@ -66,7 +67,7 @@ const useStyles = createUseStyles((theme: ITheme) => ({
     "& h1": {
       fontSize: "65px",
       margin: "0px",
-      fontWeight:"700",
+      fontWeight: "700",
       color: theme.text,
       "@media screen and (max-width: 600px)": {
         fontSize: "40px"
@@ -84,7 +85,7 @@ const useStyles = createUseStyles((theme: ITheme) => ({
   }
 }))
 
-const Header: React.FC<HeaderProps> = ({ htext, description }: HeaderProps): JSX.Element => {
+const Header: React.FC<HeaderProps> = ({ htext, description, showBtn = true }) => {
   const theme = useTheme() as ITheme
   const classes = useStyles()
 
@@ -100,7 +101,7 @@ const Header: React.FC<HeaderProps> = ({ htext, description }: HeaderProps): JSX
       <div className={classes.text_box}>
         <h1>{htext}</h1>
         <h2>{description}</h2>
-        <Button text="Explore More" color={theme.text} textColor={theme.alternativeBackground} />
+        {showBtn && <Button text="Explore More" color={theme.text} textColor={theme.alternativeBackground} />}
       </div>
     </header>
   );

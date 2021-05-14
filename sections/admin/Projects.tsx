@@ -7,11 +7,12 @@ import Projects_form, { Projects_createInputs } from "./Projects_form";
 import Modal from '../../components/Modal';
 import { TButton } from '../../components/Button';
 import { useTheme } from 'react-jss';
-import Table from '../../components/Table';
-
+import DataTable from '../../components/DataTable';
+import { ITheme } from "../../styles/theme";
+import ReactLoading from 'react-loading';
 
 const Projects: React.FC = (): JSX.Element => {
-  const theme = useTheme()
+  const theme: ITheme = useTheme()
   const [projectList, setProjectList] = useState([])
   const [createFormOpen, setCreateFormOpen] = useState(false)
   const [updateFormOpen, setUpdateFormOpen] = useState(false)
@@ -62,19 +63,25 @@ const Projects: React.FC = (): JSX.Element => {
 
   return (
     <Section title="Projects" id="projects">
-      {projectList.length > 0
-        ? <Table columns={[
-          { Header: "Id", accessor: "id" },
-          { Header: "Name", accessor: "name" },
-        ]} data={projectList} updateBtnHandler={openUpdateForm} deleteBtnHandler={deleteSubmit} />
-        : null}
-      <TButton text="Create" theme={theme} onClick={() => { setCreateFormOpen(true) }} />
-      <Modal isOpen={createFormOpen} setIsOpen={setCreateFormOpen}>
-        <Projects_form title="Create" onSubmit={createSubmit} loading={[projectsLoading, "Creating..."]} />
-      </Modal>
-      <Modal isOpen={updateFormOpen} setIsOpen={setUpdateFormOpen}>
-        <Projects_form id={updateFormId} title="Update" defaultValues={updateFormDefs} onSubmit={updateSubmit} loading={[projectsLoading, "Updating..."]} />
-      </Modal>
+      {
+        projectList.length > 0
+          ?
+          <>
+            <DataTable columns={[
+              { Header: "Id", accessor: "id" },
+              { Header: "Name", accessor: "name" },
+            ]} data={projectList} updateBtnHandler={openUpdateForm} deleteBtnHandler={deleteSubmit} />
+            <TButton text="Create" theme={theme} onClick={() => { setCreateFormOpen(true) }} />
+            <Modal isOpen={createFormOpen} setIsOpen={setCreateFormOpen}>
+              <Projects_form title="Create" onSubmit={createSubmit} loading={[projectsLoading, "Creating..."]} />
+            </Modal>
+            <Modal isOpen={updateFormOpen} setIsOpen={setUpdateFormOpen}>
+              <Projects_form id={updateFormId} title="Update" defaultValues={updateFormDefs} onSubmit={updateSubmit} loading={[projectsLoading, "Updating..."]} />
+            </Modal>
+          </>
+          :
+          <ReactLoading type="bubbles" color={theme.primary} />
+      }
     </Section>
   );
 }
