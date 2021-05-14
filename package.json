@@ -12,6 +12,8 @@
   },
   "dependencies": {
     "@babel/plugin-proposal-decorators": "^7.13.15",
+    "@ckeditor/ckeditor5-build-classic": "^27.1.0",
+    "@ckeditor/ckeditor5-react": "^3.0.2",
     "@firebase/app": "^0.6.21",
     "@fortawesome/fontawesome-free": "^5.15.3",
     "@fortawesome/fontawesome-svg-core": "^1.2.35",

@@ -3,6 +3,7 @@ import { createUseStyles } from 'react-jss';
 import { useState, useEffect } from 'react';
 import { useTheme } from 'react-jss'
 import { ITheme } from '../styles/theme';
+import { Link } from 'react-scroll'
 
 export interface HeaderProps {
   htext: string,
@@ -101,7 +102,7 @@ const Header: React.FC<HeaderProps> = ({ htext, description, showBtn = true }) =
       <div className={classes.text_box}>
         <h1>{htext}</h1>
         <h2>{description}</h2>
-        {showBtn && <Button text="Explore More" color={theme.text} textColor={theme.alternativeBackground} />}
+        {showBtn && <Link to="about" spy={true} smooth={true} duration={1000}><Button text="Explore More" color={theme.text} textColor={theme.alternativeBackground} /></Link>}
       </div>
     </header>
   );

@@ -2,6 +2,7 @@ import Header from '../components/Header'
 import About from '../sections/index/About'
 import Navbar from '../components/Navbar';
 import Projects from '../sections/index/Projects';
+import Contact from '../sections/index/Contact';
 
 export interface HomeProps {
 
@@ -21,6 +22,7 @@ const Home: React.FC<HomeProps> = ({ }): JSX.Element => {
       />
       <About />
       <Projects />
+      <Contact />
     </>
   )
 }
