@@ -11,7 +11,7 @@ import DataTable from '../../components/DataTable';
 import { ITheme } from "../../styles/theme";
 import ReactLoading from 'react-loading';
 
-const Projects: React.FC = (): JSX.Element => {
+const Projects: React.FC = () => {
   const theme: ITheme = useTheme()
   const [projectList, setProjectList] = useState([])
   const [createFormOpen, setCreateFormOpen] = useState(false)
@@ -26,7 +26,7 @@ const Projects: React.FC = (): JSX.Element => {
     })
   }, [])
 
-  const createSubmit: SubmitHandler<any> = (data) => {
+  const createSubmit: SubmitHandler<any> = async (data) => {
     setProjectsLoading(true)
     delete data.id
     axios.post('/api/projects/create', data).then((res) => {
@@ -56,7 +56,6 @@ const Projects: React.FC = (): JSX.Element => {
   const deleteSubmit: SubmitHandler<any> = (id) => {
     setProjectsLoading(true)
     axios.get(`/api/projects/${id}/delete`).then((res) => {
-      console.log(res)
       setProjectsLoading(false)
     })
   };

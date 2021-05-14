@@ -1,9 +1,9 @@
 import { useTheme } from 'react-jss';
 import { DefaultSession } from "next-auth";
-import Navbar from '../Navbar';
-import Header from "../Header";
-import Projects from '../../sections/admin/Projects'
-import DangerZone from '../../sections/admin/DangerZone';
+import Navbar from '../../components/Navbar';
+import Header from "../../components/Header";
+import Projects from './Projects'
+import DangerZone from './DangerZone';
 export interface PanelProps {
   user: DefaultSession["user"],
   signOut: any

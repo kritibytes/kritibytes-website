@@ -2,6 +2,7 @@ import Section from "../../components/Section";
 import Button,{ TButton } from "../../components/Button";
 import { useTheme } from 'react-jss';
 
+
 const DangerZone: React.FC<{ signOut: any }> = ({ signOut }): JSX.Element => {
   const theme = useTheme()
   return (

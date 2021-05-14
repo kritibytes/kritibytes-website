@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { TButton } from '../../components/Button';
 import { useTheme } from 'react-jss';
 import { ITheme } from '../../styles/theme';
-import Panel from '../../components/Admin/Panel';
+import Panel from '../../sections/admin/Panel';
 
 const Admin: React.FC = () => {
   const [session] = useSession()
