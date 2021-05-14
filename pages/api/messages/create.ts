@@ -3,7 +3,9 @@ import db from '../../../services/db'
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
 
-  await db.collection("messages").add(req.body)
+  var data = req.body
+
+  await db.collection("messages").add(data)
 
   res.json({ success: true })
 }

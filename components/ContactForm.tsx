@@ -7,6 +7,9 @@ import { ITheme } from "../styles/theme";
 import axios from 'axios';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import emailjs from 'emailjs-com'
+
+emailjs.init(process.env.NEXT_PUBLIC_EMAILJS_USER)
 
 export interface ContactFormProps {
 
@@ -19,6 +22,9 @@ export type ContactFormFields = {
   body: string,
 }
 
+var emailjs_conf = {
+  
+}
 
 const ContactForm: React.FC<ContactFormProps> = () => {
   const theme: ITheme = useTheme()
@@ -27,10 +33,8 @@ const ContactForm: React.FC<ContactFormProps> = () => {
   const editorRef = useRef()
   const [editorLoaded, setEditorLoaded] = useState(false)
   const { CKEditor, ClassicEditor } = editorRef.current || {} as { CKEditor: null, ClassicEditor: null }
-
   useEffect(() => {
     register('body');
-    
     (editorRef as any).current = {
       // CKEditor: require('@ckeditor/ckeditor5-react'), // depricated in v3
       CKEditor: require('@ckeditor/ckeditor5-react').CKEditor, // v3+
@@ -44,6 +48,9 @@ const ContactForm: React.FC<ContactFormProps> = () => {
     setSubmitting(true)
     axios.post('/api/messages/create', data).then((res) => {
       setSubmitting(false)
+    })
+    emailjs.send('service_w8sxqjm', 'template_4fdlc3m', data).then((res) => {
+      
     })
   }
 
