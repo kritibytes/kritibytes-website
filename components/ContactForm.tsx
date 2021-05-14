@@ -42,7 +42,7 @@ const ContactForm: React.FC<ContactFormProps> = () => {
   const formHandler: SubmitHandler<ContactFormFields> = (data) => {
     data.body = data.body.replace(/\r\n|\r|\n/g, "<br />")
     setSubmitting(true)
-    axios.post('/api/contact_form', data).then((res) => {
+    axios.post('/api/messages/create', data).then((res) => {
       setSubmitting(false)
     })
   }
